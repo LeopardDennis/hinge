@@ -34,10 +34,21 @@ $('#container').waterfall({
 </script>
 <script type="text/javascript">
 $(function(){
+	animationArr = ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'bounceIn', 'bounceInDown', 'bounceInLeft', 
+					'bounceInRight', 'bounceInUp', 'bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeIn', 
+					'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 
+					'fadeOutRight', 'fadeOutUp', 'flip', 'flipInX', 'flipInY', 'flipOutX', 'flipOutY', 'lightSpeedIn', 'lightSpeedOut', 'rotateIn', 
+					'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 
+					'rotateOutUpLeft', 'rotateOutUpRight', 'hinge', 'rollIn', 'rollOut', 'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 
+					'zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp'];
+	
+	$('body').addClass('animated zoomInDown');
     $('#container').on('click', '.item', function(){
-        $(this).addClass('animated hinge cover_it');
+		var pointer = Math.floor((Math.random() * 60));
+		var currentClass = animationArr[pointer];
+        $(this).addClass('animated cover_it ' + currentClass);
         $(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $(this).remove();
+            $(this).removeClass('animated cover_it ' + currentClass);
         });
     })
 });
